@@ -128,7 +128,19 @@ class CosyVoiceModel:
         self.llm_end_dict[uuid] = True
 
     def token2wav(self, token, prompt_token, prompt_feat, embedding, uuid, finalize=False, speed=1.0):
-        with torch.cuda.amp.autocast(self.fp16):
+        if self.fp16:
+            amp_dtype = torch.float16
+            enable_autocast = True
+        elif self.bf16:
+            amp_dtype = torch.bfloat16
+            enable_autocast = True
+        else:
+            amp_dtype = torch.float32
+            enable_autocast = False
+        
+        # with torch.cuda.amp.autocast(self.fp16):
+        with torch.autocast(device_type=self.device.type, dtype=amp_dtype, enabled=enable_autocast):
+        # with torch.cuda.amp.autocast(self.fp16):
             tts_mel, self.flow_cache_dict[uuid] = self.flow.inference(token=token.to(self.device),
                                                                       token_len=torch.tensor([token.shape[1]], dtype=torch.int32).to(self.device),
                                                                       prompt_token=prompt_token.to(self.device),
