@@ -243,15 +243,22 @@ class CosyVoice2Model(CosyVoiceModel):
                  llm: torch.nn.Module,
                  flow: torch.nn.Module,
                  hift: torch.nn.Module,
-                 fp16: bool = False):
+                 fp16: bool = False,
+                 bf16: bool = False):
         self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
         self.llm = llm
         self.flow = flow
         self.hift = hift
         self.fp16 = fp16
+        self.bf16 = bf16
+        if self.fp16 and self.bf16:
+            raise ValueError("fp16 and bf16 cannot be both True")
         if self.fp16 is True:
             self.llm.half()
             self.flow.half()
+        if self.bf16 is True:
+            self.llm.to(dtype=torch.bfloat16)
+            self.flow.to(dtype=torch.bfloat16)
         # NOTE must matching training static_chunk_size
         self.token_hop_len = 25
         # hift cache
@@ -283,16 +290,27 @@ class CosyVoice2Model(CosyVoiceModel):
         del self.llm.llm.model.model.layers
 
     def token2wav(self, token, prompt_token, prompt_feat, embedding, token_offset, uuid, stream=False, finalize=False, speed=1.0):
-        with torch.cuda.amp.autocast(self.fp16):
+        if self.fp16:
+            amp_dtype = torch.float16
+            enable_autocast = True
+        elif self.bf16:
+            amp_dtype = torch.bfloat16
+            enable_autocast = True
+        else:
+            amp_dtype = torch.float32
+            enable_autocast = False
+        
+        # with torch.cuda.amp.autocast(self.fp16):
+        with torch.autocast(device_type=self.device.type, dtype=amp_dtype, enabled=enable_autocast):
             tts_mel, _ = self.flow.inference(token=token.to(self.device),
-                                             token_len=torch.tensor([token.shape[1]], dtype=torch.int32).to(self.device),
-                                             prompt_token=prompt_token.to(self.device),
-                                             prompt_token_len=torch.tensor([prompt_token.shape[1]], dtype=torch.int32).to(self.device),
-                                             prompt_feat=prompt_feat.to(self.device),
-                                             prompt_feat_len=torch.tensor([prompt_feat.shape[1]], dtype=torch.int32).to(self.device),
-                                             embedding=embedding.to(self.device),
-                                             streaming=stream,
-                                             finalize=finalize)
+                                            token_len=torch.tensor([token.shape[1]], dtype=torch.int32).to(self.device),
+                                            prompt_token=prompt_token.to(self.device),
+                                            prompt_token_len=torch.tensor([prompt_token.shape[1]], dtype=torch.int32).to(self.device),
+                                            prompt_feat=prompt_feat.to(self.device),
+                                            prompt_feat_len=torch.tensor([prompt_feat.shape[1]], dtype=torch.int32).to(self.device),
+                                            embedding=embedding.to(self.device),
+                                            streaming=stream,
+                                            finalize=finalize)
         tts_mel = tts_mel[:, :, token_offset * self.flow.token_mel_ratio:]
         # append hift cache
         if self.hift_cache_dict[uuid] is not None:

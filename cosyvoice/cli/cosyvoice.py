@@ -141,10 +141,13 @@ class CosyVoice:
 
 class CosyVoice2(CosyVoice):
 
-    def __init__(self, model_dir, load_jit=False, load_trt=False, load_vllm=False, fp16=False, trt_concurrent=1):
+    def __init__(self, model_dir, load_jit=False, load_trt=False, load_vllm=False, fp16=False, bf16=False, trt_concurrent=1):
         self.instruct = True if '-Instruct' in model_dir else False
         self.model_dir = model_dir
         self.fp16 = fp16
+        self.bf16 = bf16
+        if self.fp16 and self.bf16:
+            raise ValueError("fp16 and bf16 cannot be both True")
         if not os.path.exists(model_dir):
             model_dir = snapshot_download(model_dir)
         hyper_yaml_path = '{}/cosyvoice2.yaml'.format(model_dir)
@@ -160,10 +163,10 @@ class CosyVoice2(CosyVoice):
                                           '{}/spk2info.pt'.format(model_dir),
                                           configs['allowed_special'])
         self.sample_rate = configs['sample_rate']
-        if torch.cuda.is_available() is False and (load_jit is True or load_trt is True or fp16 is True):
-            load_jit, load_trt, fp16 = False, False, False
-            logging.warning('no cuda device, set load_jit/load_trt/fp16 to False')
-        self.model = CosyVoice2Model(configs['llm'], configs['flow'], configs['hift'], fp16)
+        if torch.cuda.is_available() is False and (load_jit is True or load_trt is True):
+            load_jit, load_trt = False, False
+            logging.warning('no cuda device, set load_jit/load_trt to False')
+        self.model = CosyVoice2Model(configs['llm'], configs['flow'], configs['hift'], fp16, bf16)
         self.model.load('{}/llm.pt'.format(model_dir),
                         '{}/flow.pt'.format(model_dir),
                         '{}/hift.pt'.format(model_dir))
