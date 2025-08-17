@@ -257,6 +257,7 @@ class CosyVoice2Model(CosyVoiceModel):
             self.llm.half()
             self.flow.half()
         if self.bf16 is True:
+            # print(f"torch.cpu._is_amx_tile_supported(): {torch.cpu._is_amx_tile_supported()}")
             self.llm.to(dtype=torch.bfloat16)
             self.flow.to(dtype=torch.bfloat16)
         # NOTE must matching training static_chunk_size

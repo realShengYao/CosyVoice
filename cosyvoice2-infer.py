@@ -4,7 +4,7 @@ from cosyvoice.cli.cosyvoice import CosyVoice, CosyVoice2
 from cosyvoice.utils.file_utils import load_wav
 import torchaudio
 
-cosyvoice = CosyVoice2('/root/.cache/modelscope/hub/models/iic/CosyVoice2-0___5B', load_jit=False, load_trt=False, load_vllm=False, fp16=True, bf16=False)
+cosyvoice = CosyVoice2('/root/.cache/modelscope/hub/models/iic/CosyVoice2-0___5B', load_jit=False, load_trt=False, load_vllm=False, fp16=False, bf16=True)
 
 def get_module_dtype(module):
     for p in module.parameters():
