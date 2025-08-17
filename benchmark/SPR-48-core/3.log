@@ -1,0 +1,131 @@
+(cosyvoice) 
+# root @ iZ2zeew6687miuyy0njky1Z in ~/cosy-voice on git:bf16-dev x [23:11:07] 
+$ python bench-streaming.py
+failed to import ttsfrd, use wetext instead
+/root/miniforge3/envs/cosyvoice/lib/python3.10/site-packages/lightning/fabric/__init__.py:41: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+/root/miniforge3/envs/cosyvoice/lib/python3.10/site-packages/diffusers/models/lora.py:393: FutureWarning: `LoRACompatibleLinear` is deprecated and will be removed in version 1.0.0. Use of `LoRACompatibleLinear` is deprecated. Please switch to PEFT backend by installing PEFT: `pip install peft`.
+  deprecate("LoRACompatibleLinear", "1.0.0", deprecation_message)
+2025-08-17 23:11:14,921 INFO input frame rate=25
+/root/miniforge3/envs/cosyvoice/lib/python3.10/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+Downloading Model to directory: /root/.cache/modelscope/hub/pengzhendong/wetext
+2025-08-17 23:11:16,686 DEBUG Starting new HTTPS connection (1): www.modelscope.cn:443
+2025-08-17 23:11:17,035 DEBUG https://www.modelscope.cn:443 "GET /api/v1/models/pengzhendong/wetext/revisions HTTP/1.1" 200 205
+2025-08-17 23:11:17,231 DEBUG https://www.modelscope.cn:443 "GET /api/v1/models/pengzhendong/wetext/repo/files?Revision=master&Recursive=True HTTP/1.1" 200 None
+Downloading Model to directory: /root/.cache/modelscope/hub/pengzhendong/wetext
+2025-08-17 23:11:17,321 DEBUG Starting new HTTPS connection (1): www.modelscope.cn:443
+2025-08-17 23:11:17,687 DEBUG https://www.modelscope.cn:443 "GET /api/v1/models/pengzhendong/wetext/revisions HTTP/1.1" 200 205
+2025-08-17 23:11:17,847 DEBUG https://www.modelscope.cn:443 "GET /api/v1/models/pengzhendong/wetext/repo/files?Revision=master&Recursive=True HTTP/1.1" 200 None
+[INFO] LLM dtype: torch.bfloat16
+[INFO] Flow dtype: torch.bfloat16
+/root/miniforge3/envs/cosyvoice/lib/python3.10/site-packages/torchaudio/_backend/utils.py:213: UserWarning: In 2.9, this function's implementation will be changed to use torchaudio.load_with_torchcodec` under the hood. Some parameters like ``normalize``, ``format``, ``buffer_size``, and ``backend`` will be ignored. We recommend that you port your code to rely directly on TorchCodec's decoder instead: https://docs.pytorch.org/torchcodec/stable/generated/torchcodec.decoders.AudioDecoder.html#torchcodec.decoders.AudioDecoder.
+  warnings.warn(
+2025-08-17 23:11:19,007 INFO get tts_text generator, will skip text_normalize!
+  0%|                                                                                                                                                                    | 0/1 [00:00<?, ?it/s]2025-08-17 23:11:19,007 INFO get tts_text generator, will return _extract_text_token_generator!
+2025-08-17 23:11:19,216 INFO synthesis text <generator object text_generator at 0x7fe557b29620>
+/root/cosy-voice/cosyvoice/cli/model.py:104: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with self.llm_context, torch.cuda.amp.autocast(self.fp16 is True and hasattr(self.llm, 'vllm') is False):
+2025-08-17 23:11:19,218 INFO append 5 text token 15 speech token
+2025-08-17 23:11:19,218 INFO append 5 text token 15 speech token
+2025-08-17 23:11:19,218 INFO append 5 text token 15 speech token
+2025-08-17 23:11:19,219 INFO not enough text token to decode, wait for more
+2025-08-17 23:11:19,219 INFO not enough text token to decode, wait for more
+2025-08-17 23:11:19,219 INFO not enough text token to decode, wait for more
+2025-08-17 23:11:19,219 INFO not enough text token to decode, wait for more
+2025-08-17 23:11:19,219 INFO append 5 text token 15 speech token
+2025-08-17 23:11:19,219 INFO not enough text token to decode, wait for more
+2025-08-17 23:11:19,219 INFO not enough text token to decode, wait for more
+2025-08-17 23:11:19,219 INFO not enough text token to decode, wait for more
+2025-08-17 23:11:19,219 INFO not enough text token to decode, wait for more
+2025-08-17 23:11:19,219 INFO not enough text token to decode, wait for more
+2025-08-17 23:11:19,219 INFO append 5 text token 15 speech token
+2025-08-17 23:11:19,219 INFO not enough text token to decode, wait for more
+2025-08-17 23:11:19,219 INFO not enough text token to decode, wait for more
+2025-08-17 23:11:19,219 INFO not enough text token to decode, wait for more
+2025-08-17 23:11:19,219 INFO not enough text token to decode, wait for more
+2025-08-17 23:11:19,219 INFO not enough text token to decode, wait for more
+2025-08-17 23:11:19,219 INFO append 5 text token 12 speech token
+2025-08-17 23:11:19,369 INFO fill_token index 3 next fill_token index 19
+2025-08-17 23:11:19,369 INFO get fill token, need to append more text token
+2025-08-17 23:11:19,369 INFO not enough text token to decode, wait for more
+2025-08-17 23:11:19,369 INFO get fill token, need to append more text token
+2025-08-17 23:11:19,369 INFO not enough text token to decode, wait for more
+2025-08-17 23:11:19,369 INFO get fill token, need to append more text token
+2025-08-17 23:11:19,369 INFO not enough text token to decode, wait for more
+2025-08-17 23:11:19,369 INFO get fill token, need to append more text token
+2025-08-17 23:11:19,369 INFO not enough text token to decode, wait for more
+2025-08-17 23:11:19,369 INFO get fill token, need to append more text token
+2025-08-17 23:11:19,369 INFO append 5 text token
+2025-08-17 23:11:19,746 INFO fill_token index 19 next fill_token index 35
+2025-08-17 23:11:19,746 INFO get fill token, need to append more text token
+2025-08-17 23:11:19,746 INFO not enough text token to decode, wait for more
+2025-08-17 23:11:19,746 INFO get fill token, need to append more text token
+2025-08-17 23:11:19,746 INFO not enough text token to decode, wait for more
+2025-08-17 23:11:19,746 INFO get fill token, need to append more text token
+2025-08-17 23:11:19,746 INFO not enough text token to decode, wait for more
+2025-08-17 23:11:19,746 INFO get fill token, need to append more text token
+2025-08-17 23:11:19,746 INFO not enough text token to decode, wait for more
+2025-08-17 23:11:19,746 INFO get fill token, need to append more text token
+2025-08-17 23:11:19,746 INFO append 5 text token
+2025-08-17 23:11:20,124 INFO fill_token index 35 next fill_token index 51
+2025-08-17 23:11:20,124 INFO get fill token, need to append more text token
+2025-08-17 23:11:20,124 INFO not enough text token to decode, wait for more
+2025-08-17 23:11:20,124 INFO get fill token, need to append more text token
+2025-08-17 23:11:20,124 INFO not enough text token to decode, wait for more
+2025-08-17 23:11:20,124 INFO get fill token, need to append more text token
+2025-08-17 23:11:20,124 INFO not enough text token to decode, wait for more
+2025-08-17 23:11:20,125 INFO get fill token, need to append more text token
+2025-08-17 23:11:20,125 INFO not enough text token to decode, wait for more
+2025-08-17 23:11:20,125 INFO get fill token, need to append more text token
+2025-08-17 23:11:20,125 INFO append 5 text token
+2025-08-17 23:11:20,506 INFO fill_token index 51 next fill_token index 67
+2025-08-17 23:11:20,506 INFO get fill token, need to append more text token
+2025-08-17 23:11:20,506 INFO not enough text token to decode, wait for more
+2025-08-17 23:11:20,506 INFO get fill token, need to append more text token
+2025-08-17 23:11:20,506 INFO not enough text token to decode, wait for more
+2025-08-17 23:11:20,506 INFO get fill token, need to append more text token
+2025-08-17 23:11:20,506 INFO not enough text token to decode, wait for more
+2025-08-17 23:11:20,506 INFO get fill token, need to append more text token
+2025-08-17 23:11:20,506 INFO not enough text token to decode, wait for more
+2025-08-17 23:11:20,506 INFO get fill token, need to append more text token
+2025-08-17 23:11:20,506 INFO append 5 text token
+2025-08-17 23:11:20,889 INFO fill_token index 67 next fill_token index 83
+2025-08-17 23:11:20,889 INFO get fill token, need to append more text token
+2025-08-17 23:11:20,889 INFO not enough text token to decode, wait for more
+2025-08-17 23:11:20,889 INFO get fill token, need to append more text token
+2025-08-17 23:11:20,889 INFO not enough text token to decode, wait for more
+2025-08-17 23:11:20,889 INFO get fill token, need to append more text token
+2025-08-17 23:11:20,889 INFO not enough text token to decode, wait for more
+2025-08-17 23:11:20,889 INFO get fill token, need to append more text token
+2025-08-17 23:11:20,889 INFO not enough text token to decode, wait for more
+2025-08-17 23:11:20,889 INFO get fill token, need to append more text token
+2025-08-17 23:11:20,889 INFO append 5 text token
+2025-08-17 23:11:21,278 INFO fill_token index 83 next fill_token index 99
+2025-08-17 23:11:21,278 INFO get fill token, need to append more text token
+2025-08-17 23:11:21,278 INFO not enough text token to decode, wait for more
+2025-08-17 23:11:21,279 INFO get fill token, need to append more text token
+2025-08-17 23:11:21,279 INFO not enough text token to decode, wait for more
+2025-08-17 23:11:21,279 INFO get fill token, need to append more text token
+2025-08-17 23:11:21,279 INFO not enough text token to decode, wait for more
+2025-08-17 23:11:21,279 INFO get fill token, need to append more text token
+2025-08-17 23:11:21,279 INFO not enough text token to decode, wait for more
+2025-08-17 23:11:21,279 INFO get fill token, need to append more text token
+2025-08-17 23:11:21,279 INFO append 5 text token
+2025-08-17 23:11:21,672 INFO fill_token index 99 next fill_token index 115
+2025-08-17 23:11:21,672 INFO get fill token, need to append more text token
+2025-08-17 23:11:21,672 INFO not enough text token to decode, wait for more
+2025-08-17 23:11:21,672 INFO get fill token, need to append more text token
+2025-08-17 23:11:21,672 INFO not enough text token to decode, wait for more
+2025-08-17 23:11:21,672 INFO get fill token, need to append more text token
+2025-08-17 23:11:21,672 INFO not enough text token to decode, wait for more
+2025-08-17 23:11:21,672 INFO get fill token, need to append more text token
+2025-08-17 23:11:21,672 INFO not enough text token to decode, wait for more
+2025-08-17 23:11:21,672 INFO get fill token, need to append more text token
+2025-08-17 23:11:21,672 INFO append 5 text token
+2025-08-17 23:11:22,065 INFO fill_token index 115 next fill_token index 131
+2025-08-17 23:11:22,065 INFO no more text token, decode until met eos
+2025-08-17 23:11:28,173 INFO first token latency: 8.957s
+2025-08-17 23:11:28,173 INFO yield speech len 11.40s, rtf 0.786
+/root/miniforge3/envs/cosyvoice/lib/python3.10/site-packages/torchaudio/_backend/utils.py:337: UserWarning: In 2.9, this function's implementation will be changed to use torchaudio.save_with_torchcodec` under the hood. Some parameters like format, encoding, bits_per_sample, buffer_size, and ``backend`` will be ignored. We recommend that you port your code to rely directly on TorchCodec's encoder instead: https://docs.pytorch.org/torchcodec/stable/generated/torchcodec.encoders.AudioEncoder
+  warnings.warn(
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:09<00:00,  9.17s/it]
