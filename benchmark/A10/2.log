@@ -1,0 +1,130 @@
+(cosyvoice) 
+# root @ iZ2zea64fnstllqnt1db51Z in ~/cosy-voice on git:bf16-dev x [23:14:32] 
+$ python bench-streaming.py
+failed to import ttsfrd, use wetext instead
+/root/miniforge3/envs/cosyvoice/lib/python3.10/site-packages/lightning/fabric/__init__.py:41: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+/root/miniforge3/envs/cosyvoice/lib/python3.10/site-packages/diffusers/models/lora.py:393: FutureWarning: `LoRACompatibleLinear` is deprecated and will be removed in version 1.0.0. Use of `LoRACompatibleLinear` is deprecated. Please switch to PEFT backend by installing PEFT: `pip install peft`.
+  deprecate("LoRACompatibleLinear", "1.0.0", deprecation_message)
+2025-08-17 23:14:46,860 INFO input frame rate=25
+/root/miniforge3/envs/cosyvoice/lib/python3.10/site-packages/torch/nn/utils/weight_norm.py:28: UserWarning: torch.nn.utils.weight_norm is deprecated in favor of torch.nn.utils.parametrizations.weight_norm.
+  warnings.warn("torch.nn.utils.weight_norm is deprecated in favor of torch.nn.utils.parametrizations.weight_norm.")
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+2025-08-17 23:14:48.594366998 [W:onnxruntime:, transformer_memcpy.cc:74 ApplyImpl] 8 Memcpy nodes are added to the graph main_graph for CUDAExecutionProvider. It might have negative impact on performance (including unable to run CUDA graph). Set session_options.log_severity_level=1 to see the detail logs before this message.
+2025-08-17 23:14:48.597161828 [W:onnxruntime:, session_state.cc:1166 VerifyEachNodeIsAssignedToAnEp] Some nodes were not assigned to the preferred execution providers which may or may not have an negative impact on performance. e.g. ORT explicitly assigns shape related ops to CPU to improve perf.
+2025-08-17 23:14:48.597176811 [W:onnxruntime:, session_state.cc:1168 VerifyEachNodeIsAssignedToAnEp] Rerunning with verbose output on a non-minimal build will show node assignments.
+Downloading Model to directory: /root/.cache/modelscope/hub/pengzhendong/wetext
+2025-08-17 23:14:48,755 DEBUG Starting new HTTPS connection (1): www.modelscope.cn:443
+2025-08-17 23:14:49,028 DEBUG https://www.modelscope.cn:443 "GET /api/v1/models/pengzhendong/wetext/revisions HTTP/1.1" 200 205
+2025-08-17 23:14:49,107 DEBUG https://www.modelscope.cn:443 "GET /api/v1/models/pengzhendong/wetext/repo/files?Revision=master&Recursive=True HTTP/1.1" 200 None
+Downloading Model to directory: /root/.cache/modelscope/hub/pengzhendong/wetext
+2025-08-17 23:14:49,202 DEBUG Starting new HTTPS connection (1): www.modelscope.cn:443
+2025-08-17 23:14:49,642 DEBUG https://www.modelscope.cn:443 "GET /api/v1/models/pengzhendong/wetext/revisions HTTP/1.1" 200 205
+2025-08-17 23:14:49,731 DEBUG https://www.modelscope.cn:443 "GET /api/v1/models/pengzhendong/wetext/repo/files?Revision=master&Recursive=True HTTP/1.1" 200 None
+[INFO] LLM dtype: torch.bfloat16
+[INFO] Flow dtype: torch.bfloat16
+2025-08-17 23:14:52,309 INFO get tts_text generator, will skip text_normalize!
+  0%|                                                                                                                                                                    | 0/1 [00:00<?, ?it/s]2025-08-17 23:14:52,310 INFO get tts_text generator, will return _extract_text_token_generator!
+2025-08-17 23:14:53,231 INFO synthesis text <generator object text_generator at 0x7f8592b58270>
+2025-08-17 23:14:53,286 INFO append 5 text token 15 speech token
+2025-08-17 23:14:53,287 INFO append 5 text token 15 speech token
+2025-08-17 23:14:53,287 INFO append 5 text token 15 speech token
+2025-08-17 23:14:53,287 INFO not enough text token to decode, wait for more
+2025-08-17 23:14:53,287 INFO not enough text token to decode, wait for more
+2025-08-17 23:14:53,287 INFO not enough text token to decode, wait for more
+2025-08-17 23:14:53,287 INFO not enough text token to decode, wait for more
+2025-08-17 23:14:53,287 INFO append 5 text token 15 speech token
+2025-08-17 23:14:53,287 INFO not enough text token to decode, wait for more
+2025-08-17 23:14:53,287 INFO not enough text token to decode, wait for more
+2025-08-17 23:14:53,287 INFO not enough text token to decode, wait for more
+2025-08-17 23:14:53,287 INFO not enough text token to decode, wait for more
+2025-08-17 23:14:53,287 INFO not enough text token to decode, wait for more
+2025-08-17 23:14:53,287 INFO append 5 text token 15 speech token
+2025-08-17 23:14:53,287 INFO not enough text token to decode, wait for more
+2025-08-17 23:14:53,288 INFO not enough text token to decode, wait for more
+2025-08-17 23:14:53,288 INFO not enough text token to decode, wait for more
+2025-08-17 23:14:53,288 INFO not enough text token to decode, wait for more
+2025-08-17 23:14:53,288 INFO not enough text token to decode, wait for more
+2025-08-17 23:14:53,288 INFO append 5 text token 12 speech token
+2025-08-17 23:14:53,577 INFO fill_token index 3 next fill_token index 19
+2025-08-17 23:14:53,578 INFO get fill token, need to append more text token
+2025-08-17 23:14:53,578 INFO not enough text token to decode, wait for more
+2025-08-17 23:14:53,578 INFO get fill token, need to append more text token
+2025-08-17 23:14:53,578 INFO not enough text token to decode, wait for more
+2025-08-17 23:14:53,578 INFO get fill token, need to append more text token
+2025-08-17 23:14:53,578 INFO not enough text token to decode, wait for more
+2025-08-17 23:14:53,578 INFO get fill token, need to append more text token
+2025-08-17 23:14:53,578 INFO not enough text token to decode, wait for more
+2025-08-17 23:14:53,578 INFO get fill token, need to append more text token
+2025-08-17 23:14:53,578 INFO append 5 text token
+2025-08-17 23:14:53,860 INFO fill_token index 19 next fill_token index 35
+2025-08-17 23:14:53,860 INFO get fill token, need to append more text token
+2025-08-17 23:14:53,860 INFO not enough text token to decode, wait for more
+2025-08-17 23:14:53,860 INFO get fill token, need to append more text token
+2025-08-17 23:14:53,860 INFO not enough text token to decode, wait for more
+2025-08-17 23:14:53,860 INFO get fill token, need to append more text token
+2025-08-17 23:14:53,860 INFO not enough text token to decode, wait for more
+2025-08-17 23:14:53,861 INFO get fill token, need to append more text token
+2025-08-17 23:14:53,861 INFO not enough text token to decode, wait for more
+2025-08-17 23:14:53,861 INFO get fill token, need to append more text token
+2025-08-17 23:14:53,861 INFO append 5 text token
+2025-08-17 23:14:54,142 INFO fill_token index 35 next fill_token index 51
+2025-08-17 23:14:54,142 INFO get fill token, need to append more text token
+2025-08-17 23:14:54,142 INFO not enough text token to decode, wait for more
+2025-08-17 23:14:54,142 INFO get fill token, need to append more text token
+2025-08-17 23:14:54,142 INFO not enough text token to decode, wait for more
+2025-08-17 23:14:54,142 INFO get fill token, need to append more text token
+2025-08-17 23:14:54,142 INFO not enough text token to decode, wait for more
+2025-08-17 23:14:54,143 INFO get fill token, need to append more text token
+2025-08-17 23:14:54,143 INFO not enough text token to decode, wait for more
+2025-08-17 23:14:54,143 INFO get fill token, need to append more text token
+2025-08-17 23:14:54,143 INFO append 5 text token
+2025-08-17 23:14:54,427 INFO fill_token index 51 next fill_token index 67
+2025-08-17 23:14:54,427 INFO get fill token, need to append more text token
+2025-08-17 23:14:54,427 INFO not enough text token to decode, wait for more
+2025-08-17 23:14:54,427 INFO get fill token, need to append more text token
+2025-08-17 23:14:54,427 INFO not enough text token to decode, wait for more
+2025-08-17 23:14:54,427 INFO get fill token, need to append more text token
+2025-08-17 23:14:54,427 INFO not enough text token to decode, wait for more
+2025-08-17 23:14:54,427 INFO get fill token, need to append more text token
+2025-08-17 23:14:54,427 INFO not enough text token to decode, wait for more
+2025-08-17 23:14:54,427 INFO get fill token, need to append more text token
+2025-08-17 23:14:54,427 INFO append 5 text token
+2025-08-17 23:14:54,708 INFO fill_token index 67 next fill_token index 83
+2025-08-17 23:14:54,708 INFO get fill token, need to append more text token
+2025-08-17 23:14:54,708 INFO not enough text token to decode, wait for more
+2025-08-17 23:14:54,708 INFO get fill token, need to append more text token
+2025-08-17 23:14:54,708 INFO not enough text token to decode, wait for more
+2025-08-17 23:14:54,709 INFO get fill token, need to append more text token
+2025-08-17 23:14:54,709 INFO not enough text token to decode, wait for more
+2025-08-17 23:14:54,709 INFO get fill token, need to append more text token
+2025-08-17 23:14:54,709 INFO not enough text token to decode, wait for more
+2025-08-17 23:14:54,709 INFO get fill token, need to append more text token
+2025-08-17 23:14:54,709 INFO append 5 text token
+2025-08-17 23:14:54,990 INFO fill_token index 83 next fill_token index 99
+2025-08-17 23:14:54,990 INFO get fill token, need to append more text token
+2025-08-17 23:14:54,991 INFO not enough text token to decode, wait for more
+2025-08-17 23:14:54,991 INFO get fill token, need to append more text token
+2025-08-17 23:14:54,991 INFO not enough text token to decode, wait for more
+2025-08-17 23:14:54,991 INFO get fill token, need to append more text token
+2025-08-17 23:14:54,991 INFO not enough text token to decode, wait for more
+2025-08-17 23:14:54,991 INFO get fill token, need to append more text token
+2025-08-17 23:14:54,991 INFO not enough text token to decode, wait for more
+2025-08-17 23:14:54,991 INFO get fill token, need to append more text token
+2025-08-17 23:14:54,991 INFO append 5 text token
+2025-08-17 23:14:55,267 INFO fill_token index 99 next fill_token index 115
+2025-08-17 23:14:55,268 INFO get fill token, need to append more text token
+2025-08-17 23:14:55,268 INFO not enough text token to decode, wait for more
+2025-08-17 23:14:55,268 INFO get fill token, need to append more text token
+2025-08-17 23:14:55,268 INFO not enough text token to decode, wait for more
+2025-08-17 23:14:55,268 INFO get fill token, need to append more text token
+2025-08-17 23:14:55,268 INFO not enough text token to decode, wait for more
+2025-08-17 23:14:55,268 INFO get fill token, need to append more text token
+2025-08-17 23:14:55,268 INFO not enough text token to decode, wait for more
+2025-08-17 23:14:55,268 INFO get fill token, need to append more text token
+2025-08-17 23:14:55,268 INFO append 5 text token
+2025-08-17 23:14:55,550 INFO fill_token index 115 next fill_token index 131
+2025-08-17 23:14:55,550 INFO no more text token, decode until met eos
+2025-08-17 23:15:00,078 INFO first token latency: 6.847s
+2025-08-17 23:15:00,078 INFO yield speech len 13.16s, rtf 0.520
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:07<00:00,  7.79s/it]
